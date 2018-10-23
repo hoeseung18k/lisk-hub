@@ -2,17 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Parallax from '../parallax';
 import { FontIcon } from '../fontIcon';
+import { addHttp } from '../../utils/login';
 // eslint-disable-next-line import/no-unresolved
 import * as shapes from '../../assets/images/*.svg';
 import styles from './signUp.css';
 import routes from '../../constants/routes';
 
-const SignUp = ({ t, passInputState }) =>
+const SignUp = ({
+  t, passInputState, customNode, settingsUpdated,
+}) =>
   (<section className={`${styles.signUp} ${styles[passInputState]}`}>
     <section className={styles.table}>
       <div className='text-left'>
         <h2>
-          <Link className='new-account-button' to={routes.register.path}>
+          <Link className='new-account-button' to={routes.register.path}
+            onClick={() => {
+              const modifiedCustomNode = addHttp(customNode);
+              // Set up customNode for registering new account on customNode
+              settingsUpdated({ customNode: modifiedCustomNode });
+            }}>
             {t('Create Lisk ID')}
           </Link>
           <FontIcon className={styles.singUpArrow} value='arrow-right' />

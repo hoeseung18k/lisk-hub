@@ -203,7 +203,7 @@ class Login extends React.Component {
             </div>
           </section>
         </section>
-        <SignUp t={this.props.t} passInputState={this.state.passInputState} />
+        <SignUp t={this.props.t} passInputState={this.state.passInputState} customNode={this.state.address || ''} settingsUpdated={this.props.settingsUpdated} />
       </Box>
     );
   }

@@ -10,6 +10,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   account: state.account,
   network: state.settings.network || 0,
+  customNode: state.settings.customNode || '',
 });
 
 export default connect(

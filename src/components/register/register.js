@@ -15,6 +15,11 @@ class Register extends React.Component {
   // eslint-disable-next-line class-methods-use-this
   componentDidMount() {
     document.body.classList.add('contentFocused');
+    const network = Object.assign({}, getNetwork(this.props.network));
+    network.address = this.props.customNode;
+    this.props.activePeerSet({
+      network,
+    });
   }
 
   componentDidUpdate() {
@@ -30,7 +35,7 @@ class Register extends React.Component {
 
   onRegister(passphrase) {
     const network = Object.assign({}, getNetwork(this.props.network));
-
+    network.address = this.props.customNode;
     // set active peer
     this.props.activePeerSet({
       passphrase,
